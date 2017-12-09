@@ -259,3 +259,10 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+*.dll
+*.filters
+*.vcxproj
+Snake/Snake.vcxproj
+*.vcxproj
+*.vcxproj
+*.filters
