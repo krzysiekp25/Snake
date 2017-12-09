@@ -260,9 +260,6 @@ paket-files/
 __pycache__/
 *.pyc
 *.dll
-*.filters
-*.vcxproj
-Snake/Snake.vcxproj
-*.vcxproj
+*
 *.vcxproj
 *.filters
