@@ -6,13 +6,15 @@
 int main()
 {
 	bool czy_zwiekszyc = false;
-	static const sf::Time TIME_PER_FRAME = sf::seconds(0.5f);
+	static const sf::Time TIME_PER_FRAME = sf::seconds(0.1f);
 	sf::Clock clock;
 	sf::Time timeSinceLastRender = sf::Time::Zero;
 	sf::Time deltaTime;
 	Snake snake;
-	Board board(sf::Vector2i(200, 200));
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+	Board board(sf::Vector2i(300, 300));
+	sf::RenderWindow window(sf::VideoMode(300, 300), "SFML works!");
+	window.setPosition(sf::Vector2i(100, 100));
+	window.setSize(sf::Vector2u(800, 800));
 	while (snake.isCollision(board.randFruitPosition()))
 	{
 		continue;
@@ -35,7 +37,7 @@ int main()
 			snake.changeDirection(Snake::DIRECTION::UP);
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 			snake.changeDirection(Snake::DIRECTION::DOWN);
-		window.clear();
+		window.clear(sf::Color::White);
 		while (timeSinceLastRender > TIME_PER_FRAME)
 		{
 			timeSinceLastRender -= TIME_PER_FRAME;
@@ -53,6 +55,15 @@ int main()
 				{
 					continue;
 				}
+			}
+			if (snake.isHeadBodyCollision())
+			{
+				//gameover
+			}
+			if (snake.getHeadPosition().x < 0 || snake.getHeadPosition().y < 0
+				|| snake.getHeadPosition().x > board.getBoardSize().x || snake.getHeadPosition().y > board.getBoardSize().y)
+			{
+				//gameover
 			}
 		}
 		snake.drawSnake(window);

@@ -19,4 +19,6 @@ public:
 	void moveSnake();//aktualizuje pozycje o jeden ruch
 	bool isCollision(sf::Vector2i v2i);//do sprawdzania kolizji z jedzeniem
 	void drawSnake(sf::RenderWindow & w);
+	bool isHeadBodyCollision();
+	sf::Vector2i getHeadPosition();
 };

@@ -86,3 +86,20 @@ void Snake::drawSnake(sf::RenderWindow & w)
 		w.draw(r);
 	}
 }
+
+bool Snake::isHeadBodyCollision()
+{
+	bool returnValue = false;
+	auto it = snakePosition.begin();
+	for (it++; it != snakePosition.end(); it++)
+	{
+		if ((*it) == getHeadPosition())
+			returnValue = true;
+	}
+	return returnValue;
+}
+
+sf::Vector2i Snake::getHeadPosition()
+{
+	return snakePosition.front();
+}
