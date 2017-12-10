@@ -6,6 +6,7 @@
 int main()
 {
 	bool czy_zwiekszyc = false;
+	bool czy_reagowac = true;
 	static const sf::Time TIME_PER_FRAME = sf::seconds(0.1f);
 	sf::Clock clock;
 	sf::Time timeSinceLastRender = sf::Time::Zero;
@@ -29,17 +30,30 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && czy_reagowac)
+		{
 			snake.changeDirection(Snake::DIRECTION::RIGHT);
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+			czy_reagowac = false;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && czy_reagowac)
+		{
 			snake.changeDirection(Snake::DIRECTION::LEFT);
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+			czy_reagowac = false;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && czy_reagowac)
+		{
 			snake.changeDirection(Snake::DIRECTION::UP);
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+			czy_reagowac = false;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && czy_reagowac)
+		{
 			snake.changeDirection(Snake::DIRECTION::DOWN);
+			czy_reagowac = false;
+		}
 		window.clear(sf::Color::White);
 		while (timeSinceLastRender > TIME_PER_FRAME)
 		{
+			czy_reagowac = true;
 			timeSinceLastRender -= TIME_PER_FRAME;
 			if (czy_zwiekszyc)
 			{

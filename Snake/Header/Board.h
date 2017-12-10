@@ -14,7 +14,7 @@ private:
 	std::vector<sf::RectangleShape> line;
 public:
 	Board(sf::Vector2i v);
-	sf::Vector2i randFruitPosition();
+	sf::Vector2i randFruitPosition();//zrobic tablice z wszystkimi wollnymi pozycjami na podstawie snake position i wtedy wybrac sposrod nich
 	sf::Vector2i getFruitPosition();
 	void drawFruit(sf::RenderWindow & w);
 	sf::Vector2i getBoardSize();
