@@ -10,7 +10,27 @@ Snake::Snake()
 
 void Snake::changeDirection(DIRECTION d)//nie mozna skrecac do tylu
 {
-	direction = d;
+	switch (direction)
+	{
+	case DIRECTION::DOWN:
+		if(d != DIRECTION::UP)
+			direction = d;
+		break;
+	case DIRECTION::LEFT:
+		if (d != DIRECTION::RIGHT)
+			direction = d;
+		break;
+	case DIRECTION::RIGHT:
+		if (d != DIRECTION::LEFT)
+			direction = d;
+		break;
+	case DIRECTION::UP:
+		if (d != DIRECTION::DOWN)
+			direction = d;
+		break;
+	default:
+		break;
+	}
 }
 
 void Snake::enlargeSnake()
